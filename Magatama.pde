@@ -3,28 +3,42 @@ float centerX, centerY;
 
 float _rateNoise;
 
+color c1, c2;
+
 void setup()
 {
-  size(1024, 1024);
+  size(1980, 1080);
   smooth();
   frameRate(30);  
  
   centerX = width / 2;
   centerY = height / 2;
-  magas = new Jewel[2];
+  magas = new Jewel[0];
   
-  color c1 = color(0);
-  color c2 = color(255);
+  c2 = color(255);
  
-  magas[0] = new Jewel(width / 2, height / 2, height / 2, 0, c1, c2); 
-  magas[1] = new Jewel(width / 2, height / 2, height / 2, 180, c2, c1);
+  float size = 80;
+  float angle = 45;
+  float wmax = width / size;
+  float hmax = height / size;
  
+  for(int x = 0; x < wmax; x++)
+  {
+    for(int y = 0; y < hmax; y++)
+    {
+      c1 = color(random(128, 255), random(128, 255), random(128, 255));
+      Jewel maga = new Jewel(x * size, y * size, size / 2, 180 * (x % 2), c1, c2);
+      magas = (Jewel[])append(magas, maga);
+    }
+  }
+  
   background(c2);
 }
 
 void draw()
-{  
-  // _rateNoise += 0.05;
+{ 
+  background(c2);
+  _rateNoise += 0.05;
   
   for(int i = 0; i < magas.length; i++)
   {

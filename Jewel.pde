@@ -16,6 +16,7 @@ class Jewel
     mColor = mc;
     increase = radius * 0.001;
     rate = 0.5528;
+    // rate = 0;
   }
   
   void drawMe()
@@ -26,8 +27,8 @@ class Jewel
   
   void compute()
   {
-    angle += 5;
-    radius -= increase;
+    angle += 1;
+    // radius -= increase;
     
     // rate = noise(_rateNoise);
   }
@@ -39,7 +40,7 @@ class Jewel
     rotate(radians(angle));
     
     noStroke();
-    fill(fillColor, 128);
+    fill(fillColor);
     
     beginShape();
     vertex(0, 0);
